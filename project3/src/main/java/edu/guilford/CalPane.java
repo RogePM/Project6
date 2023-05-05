@@ -115,7 +115,7 @@ public class CalPane extends GridPane {
 
     // method that calculates the tip
     private void calculateTip() throws NumberFormatException {
-
+            Label error = new Label("Enter a postive numeric value");
         try {
             double billAmount = Double.parseDouble(billField.getText()); // negative number exception
             if (billAmount < 0) {
@@ -124,6 +124,11 @@ public class CalPane extends GridPane {
             double tipPercentage = Double.parseDouble(tipField.getText());
             if (tipPercentage < 0) {
                 throw new NumberFormatException();
+            } else if (tipPercentage > 0 && tipPercentage > 0) {
+                tipLabel.setTextFill(Color.BLACK);
+                totalLabel.setTextFill(Color.BLACK);
+                billLabel.setTextFill(Color.BLACK);
+                error.setVisible(false);
             }
             // calculate the tip and total
             double tipAmount = billAmount * tipPercentage / 100;
@@ -145,21 +150,17 @@ public class CalPane extends GridPane {
             imageview.setPreserveRatio(true);
 
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+          e.printStackTrace();
             // display error in bill field
 
             billLabel.setTextFill(Color.RED); // this works but not the next line
             tipLabel.setTextFill(Color.RED);
-            // change tip label to print error
-            tipLabel.setText("Error: Enter a numeric value"); // **************new text does not change??
-                                                              // ******************
-            billLabel.setText("Error: Enter a numeric value");
+            totalLabel.setTextFill(Color.RED);
 
-            Label error = new Label("Error: Enter a postive numeric \nvalue for tip  and bill amount");
+            error.setVisible(true);
             error.setTextFill(Color.RED);
             add(error, 1, 4);
             error.setStyle("-fx-font-size: 20px;");
-
         }
 
     }
