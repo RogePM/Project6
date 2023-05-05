@@ -1,0 +1,10 @@
+
+1. Non-numeric input: The user may accidentally enter non-numeric input in
+the bill or tip percentage fields. This would throw a NumberFormatException if non-numeric input is entered.
+
+2.Incorrect input format: The user may enter an incorrect format for the bill or tip percentage,
+ such as entering a currency symbol or using a decimal comma instead of a decimal point.
+
+3. Missing input: The user may forget to enter a value in the bill or tip percentage fields before clicking the calculate button.
+
+4. User may enter a negative number and give out a negative result but it would not be possible in real scenerio, negativeNubmerFormat. 
